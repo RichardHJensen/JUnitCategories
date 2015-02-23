@@ -1,0 +1,21 @@
+How do I exclude unit tests I don't really want to run?
+-- mvn clean install -Dgroups=\!com.rhjensen.examples.junit.categories.moduleOne.Slow
+		-------------------------------------------------------
+		 T E S T S
+		-------------------------------------------------------
+		Concurrency config is parallel='none', perCoreThreadCount=true, threadCount=2, useUnlimitedThreads=false
+		Running com.rhjensen.examples.junit.categories.moduleOne.MyFirstClassTest
+		module-01:MyFirstClassTest:aMethodWithACategoryOfFast
+		module-01:MyFirstClassTest:shouldBeAbleToConvertStringToBoolean
+		Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 sec
+
+OR
+-- mvn clean install -DexcludedGroups=com.rhjensen.examples.junit.categories.moduleOne.Slow
+		-------------------------------------------------------
+		 T E S T S
+		-------------------------------------------------------
+		Concurrency config is parallel='none', perCoreThreadCount=true, threadCount=2, useUnlimitedThreads=false
+		Running com.rhjensen.examples.junit.categories.moduleOne.MyFirstClassTest
+		module-01:MyFirstClassTest:aMethodWithACategoryOfFast
+		module-01:MyFirstClassTest:shouldBeAbleToConvertStringToBoolean
+		Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 sec

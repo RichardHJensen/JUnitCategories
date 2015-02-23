@@ -3,9 +3,9 @@ package com.rhjensen.examples.junit.categories.moduleOne;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class MyFirstClassTest {
+public class MyFirstClassIT {
     MyFirstClass firstObject = new MyFirstClass();
     @Test
     public void shouldBeAbleToConvertStringToBoolean() {
@@ -25,4 +25,5 @@ public class MyFirstClassTest {
     public void aMethodWithACategoryOfSlow() {
         System.out.println("module-01:" + this.getClass().getSimpleName() + ":aMethodWithACategoryOfSlow");
     }
+
 }

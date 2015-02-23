@@ -1,0 +1,53 @@
+We have two classes in the same directory:
+* MyFirstClassIT
+* MyFirstClassTest
+?? Does the 'unit test' (maven test phase) only run the actual 'unit tests'??
+
+-- mvn clean install
+		-------------------------------------------------------
+		 T E S T S
+		-------------------------------------------------------
+		Running com.rhjensen.examples.junit.categories.moduleOne.MyFirstClassTest
+		module-01:MyFirstClassTest:aMethodWithACategoryOfFast
+		Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.586 sec
+
+		Results :
+
+		Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+
+Only the tests in MyFirstClassTest were run by surefire.
+So we can have side by side unit and integration tests by default naming
+convention (we'll try running the integration tests later and make sure
+the unit tests are skipped).
+
+?? If I specify a category (group), does it exclude things NOT tagged ??
+-- mvn clean install -Dgroups=Fast
+got an error:
+		[INFO] junit-categories-module-one ........................ FAILURE [  8.624 s]
+		[INFO] ------------------------------------------------------------------------
+		[INFO] BUILD FAILURE
+		[INFO] ------------------------------------------------------------------------
+		[INFO] Total time: 10.903 s
+		[INFO] Finished at: 2015-02-23T13:51:34-06:00
+		[INFO] Final Memory: 14M/145M
+		[INFO] ------------------------------------------------------------------------
+		[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test (default-test) on project junit-categories-module-one: Execution default-test of goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test failed: The forked VM terminated without saying properly goodbye. VM crash or System.exit called ? -> [Help 1]
+Caused by: java.lang.ClassNotFoundException: Fast
+
+Fully specifying the class name:
+-- mvn clean install -Dgroups=com.rhjensen.examples.junit.categories.moduleOne.Fast
+worked:
+		-------------------------------------------------------
+		 T E S T S
+		-------------------------------------------------------
+		Concurrency config is parallel='none', perCoreThreadCount=true, threadCount=2, useUnlimitedThreads=false
+		Running com.rhjensen.examples.junit.categories.moduleOne.MyFirstClassTest
+		module-01:MyFirstClassTest:aMethodWithACategoryOfFast
+		Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec
+
+		Results :
+
+		Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+If a test is NOT tagged with a category it will not be run if that category is explicity specified.
+

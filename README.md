@@ -18,3 +18,15 @@ Figure out how to use @Category in a multiple-module Maven project
   - http://maven.apache.org/surefire/maven-failsafe-plugin/integration-test-mojo.html#groups
 - We're supposed to be able to exclude tests via the JUnit @Category
   - http://maven.apache.org/surefire/maven-failsafe-plugin/integration-test-mojo.html#excludedGroups
+
+## First Experiment (FAST/SLOW)
+(see the running-FAST-test.txt and not-running-SLOW-test.txt in the ModuleOne/src/test/resources folder)
+- the surefire plugin did **NOT** run my 'integration test'. (MyFirstClassIT.java)
+  - we'll check later if it DOES get run by the failsafe plugin
+- specifying a group on the command line (**`-Dgroups=`) ONLY runs tests of that category
+  - It has to be the fully qualified classname. (Fast didn't work by itself)
+  - `Caused by: java.lang.ClassNotFoundException: Fast`
+- I could prevent a Category from running in two ways:
+  # use negation on the groups `-Dgroups=\!com.rhjensen.examples.junit.categories.moduleOne.Slow`
+  # use excludedGroups `-DexcludedGroups=com.rhjensen.examples.junit.categories.moduleOne.Slow`
+
