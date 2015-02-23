@@ -1,0 +1,39 @@
+--mvn clean install -Dgroups=com.rhjensen.examples.junit.categories.moduleOne.Fast
+		[INFO] Scanning for projects...
+		[INFO] ------------------------------------------------------------------------
+		[INFO] Reactor Build Order:
+		[INFO] 
+		[INFO] junit-categories
+		[INFO] junit-categories-module-one
+		[INFO] junit-categories-module-two
+		[INFO]                                                                         
+Build order looks OK.
+But it only ran tests for module one:
+		-------------------------------------------------------
+		 T E S T S
+		-------------------------------------------------------
+		Concurrency config is parallel='none', perCoreThreadCount=true, threadCount=2, useUnlimitedThreads=false
+		Running com.rhjensen.examples.junit.categories.moduleOne.MyFirstClassTest
+		module-01:MyFirstClassTest:aMethodWithACategoryOfFast
+		Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 sec
+and then had compilation errors on module 2.
+
+
+	[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ junit-categories-module-two ---
+	[INFO] Changes detected - recompiling the module!
+	[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+	[INFO] Compiling 1 source file to .../ModuleTwo/target/test-classes
+	[INFO] -------------------------------------------------------------
+	[ERROR] COMPILATION ERROR : 
+	[INFO] -------------------------------------------------------------
+	[ERROR] .../ModuleTwo/src/test/java/com/rhjensen/examples/junit/categories/moduleTwo/MySecondClassTest.java:[3,56] package com.rhjensen.examples.junit.categories.moduleOne does not exist
+	[ERROR] .../ModuleTwo/src/test/java/com/rhjensen/examples/junit/categories/moduleTwo/MySecondClassTest.java:[4,56] package com.rhjensen.examples.junit.categories.moduleOne does not exist
+	[ERROR] .../ModuleTwo/src/test/java/com/rhjensen/examples/junit/categories/moduleTwo/MySecondClassTest.java:[20,15] cannot find symbol
+	  symbol:   class Fast
+	  location: class com.rhjensen.examples.junit.categories.moduleTwo.MySecondClassTest
+	[ERROR] .../ModuleTwo/src/test/java/com/rhjensen/examples/junit/categories/moduleTwo/MySecondClassTest.java:[26,15] cannot find symbol
+	  symbol:   class Slow
+	  location: class com.rhjensen.examples.junit.categories.moduleTwo.MySecondClassTest
+	[INFO] 4 errors 
+	[INFO] -------------------------------------------------------------
+
