@@ -30,3 +30,11 @@ Figure out how to use @Category in a multiple-module Maven project
   # use negation on the groups `-Dgroups=\!com.rhjensen.examples.junit.categories.moduleOne.Slow`
   # use excludedGroups `-DexcludedGroups=com.rhjensen.examples.junit.categories.moduleOne.Slow`
 
+## Second Experiment (multiple modules)
+- Had to extract the categories to their own project and put a 'test' dependency from the other modules
+  - See the 'multi-module-initial.txt' file
+- A given test can have multiple categories assigned to it
+  - Specifying multiple groups is effectively an OR. A test with any of the categories specified will run.
+- It is possible to use both '-Dgroups=' and '-DexcludedGroups' on the same command line.
+  - the excluded group prevents running something even if it were selected by groups
+  - see the 'running-multiple-categories.txt' file.

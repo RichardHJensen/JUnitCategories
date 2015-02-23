@@ -6,9 +6,9 @@ import com.rhjensen.junit.categories.Slow;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class MySecondClassTest {
+public class MySecondClassIT {
     MySecondClass secondObject = new MySecondClass();
     @Test
     public void shouldBeAbleToConvertStringToBoolean() {

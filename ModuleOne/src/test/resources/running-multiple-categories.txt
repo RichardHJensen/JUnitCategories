@@ -1,0 +1,55 @@
+--mvn clean install -Dgroups=com.rhjensen.junit.categories.Fast,com.rhjensen.junit.categories.MustRun
+
+		[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ junit-categories-module-one ---
+		[INFO] Surefire report directory: /Users/rjensen/IdeaProjects/JUnitCategories/ModuleOne/target/surefire-reports
+
+		-------------------------------------------------------
+		 T E S T S
+		-------------------------------------------------------
+		Concurrency config is parallel='none', perCoreThreadCount=true, threadCount=2, useUnlimitedThreads=false
+		Running com.rhjensen.examples.junit.categories.moduleOne.MyFirstClassTest
+		module-01:MyFirstClassTest:aMethodWithACategoryOfFast
+		module-01:MyFirstClassTest:aMethodWithCategoriesFastAndMustRun
+		module-01:MyFirstClassTest:aMethodWithACategoryOfMustRun
+		module-01:MyFirstClassTest:aMethodWithCategoriesSlowAndMustRun
+		Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 sec
+...
+		[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ junit-categories-module-two ---
+		[INFO] Surefire report directory: /Users/rjensen/IdeaProjects/JUnitCategories/ModuleTwo/target/surefire-reports
+
+		-------------------------------------------------------
+		 T E S T S
+		-------------------------------------------------------
+		Concurrency config is parallel='none', perCoreThreadCount=true, threadCount=2, useUnlimitedThreads=false
+		Running com.rhjensen.examples.junit.categories.moduleTwo.MySecondClassTest
+		module-02:MySecondClassTest:aMethodWithACategoryOfFast
+		module-02:MySecondClassTest:aMethodWithCategoriesFastAndMustRun
+		module-02:MySecondClassTest:aMethodWithACategoryOfMustRun
+		module-02:MySecondClassTest:aMethodWithCategoriesSlowAndMustRun
+		Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 sec
+
+--mvn clean install -Dgroups=com.rhjensen.junit.categories.MustRun -DexcludedGroups=com.rhjensen.junit.categories.Slow
+		[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ junit-categories-module-one ---
+		[INFO] Surefire report directory: /Users/rjensen/IdeaProjects/JUnitCategories/ModuleOne/target/surefire-reports
+
+		-------------------------------------------------------
+		 T E S T S
+		-------------------------------------------------------
+		Concurrency config is parallel='none', perCoreThreadCount=true, threadCount=2, useUnlimitedThreads=false
+		Running com.rhjensen.examples.junit.categories.moduleOne.MyFirstClassTest
+		module-01:MyFirstClassTest:aMethodWithCategoriesFastAndMustRun
+		module-01:MyFirstClassTest:aMethodWithACategoryOfMustRun
+		Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 sec
+...
+		[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ junit-categories-module-two ---
+		[INFO] Surefire report directory: /Users/rjensen/IdeaProjects/JUnitCategories/ModuleTwo/target/surefire-reports
+
+		-------------------------------------------------------
+		 T E S T S
+		-------------------------------------------------------
+		Concurrency config is parallel='none', perCoreThreadCount=true, threadCount=2, useUnlimitedThreads=false
+		Running com.rhjensen.examples.junit.categories.moduleTwo.MySecondClassTest
+		module-02:MySecondClassTest:aMethodWithCategoriesFastAndMustRun
+		module-02:MySecondClassTest:aMethodWithACategoryOfMustRun
+		Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec
+

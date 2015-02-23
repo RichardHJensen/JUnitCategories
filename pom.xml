@@ -11,7 +11,21 @@
     <modules>
         <module>ModuleOne</module>
         <module>ModuleTwo</module>
+        <module>Categories</module>
     </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.surefire</groupId>
+                <artifactId>surefire</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>

@@ -11,5 +11,12 @@
 
     <artifactId>junit-categories-module-one</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.rhjensen.examples</groupId>
+            <artifactId>categories</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

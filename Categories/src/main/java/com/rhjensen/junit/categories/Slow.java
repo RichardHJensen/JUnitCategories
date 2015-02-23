@@ -1,4 +1,4 @@
-package com.rhjensen.examples.junit.categories.moduleOne;
+package com.rhjensen.junit.categories;
 
 /**
  * Created by rjensen on 2/23/15.

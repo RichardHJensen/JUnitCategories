@@ -1,5 +1,8 @@
 package com.rhjensen.examples.junit.categories.moduleOne;
 
+import com.rhjensen.junit.categories.Fast;
+import com.rhjensen.junit.categories.MustRun;
+import com.rhjensen.junit.categories.Slow;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -26,4 +29,21 @@ public class MyFirstClassIT {
         System.out.println("module-01:" + this.getClass().getSimpleName() + ":aMethodWithACategoryOfSlow");
     }
 
+    @Test
+    @Category(MustRun.class)
+    public void aMethodWithACategoryOfMustRun() {
+        System.out.println("module-01:" + this.getClass().getSimpleName() + ":aMethodWithACategoryOfMustRun");
+    }
+
+    @Test
+    @Category({Slow.class, MustRun.class})
+    public void aMethodWithCategoriesSlowAndMustRun() {
+        System.out.println("module-01:" + this.getClass().getSimpleName() + ":aMethodWithCategoriesSlowAndMustRun");
+    }
+
+    @Test
+    @Category({Fast.class, MustRun.class})
+    public void aMethodWithCategoriesFastAndMustRun() {
+        System.out.println("module-01:" + this.getClass().getSimpleName() + ":aMethodWithCategoriesFastAndMustRun");
+    }
 }
