@@ -38,3 +38,7 @@ Figure out how to use @Category in a multiple-module Maven project
 - It is possible to use both '-Dgroups=' and '-DexcludedGroups' on the same command line.
   - the excluded group prevents running something even if it were selected by groups
   - see the 'running-multiple-categories.txt' file.
+
+## Adding failsafe
+- The failsafe plugin doesn't seem to run the integration tests unless the executions tag has the integration-tests and verify goals.
+- The same categories work for integration tests as for unit tests
